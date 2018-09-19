@@ -1,0 +1,85 @@
+﻿<Window x:Class="OneStopSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OneStopSample"
+        xmlns:cmd="clr-namespace:OneStopSample.Command"
+        xmlns:ct="clr-namespace:OneStopSample.ControlTemplate"
+        xmlns:dt="clr-namespace:OneStopSample.DataTemplates"
+        xmlns:sat="clr-namespace:OneStopSample.StylesAndTriggers"
+        xmlns:converter="clr-namespace:OneStopSample.Converters"
+        xmlns:routedEvents="clr-namespace:OneStopSample.RoutedEvents"
+        xmlns:validation="clr-namespace:OneStopSample.Validation"
+        xmlns:routedCommands="clr-namespace:OneStopSample.RoutedCommands.CustomRoutedCommands"
+        xmlns:attachedDP1="clr-namespace:OneStopSample.AttachedProperties"
+        xmlns:backgroundWorker="clr-namespace:OneStopSample.BackgroundWorkerEx"
+        xmlns:comboBoxEx="clr-namespace:OneStopSample.ComboBoxEx"
+        xmlns:staticDyanmicRes="clr-namespace:OneStopSample.Resources"
+        xmlns:dts="clr-namespace:OneStopSample.DTS"
+        xmlns:interactivity="clr-namespace:OneStopSample.InteractivityEx"
+        xmlns:dpEx="clr-namespace:OneStopSample.DependencyPropertyEx"
+        xmlns:behaviourEx="clr-namespace:OneStopSample.Behaviours"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <TabControl>
+        <TabItem Header="Commands">
+            <cmd:CommandUserControl/>
+        </TabItem>
+        <TabItem Header="Control Template">
+            <ct:ControlTemplateView/>
+        </TabItem>
+        <TabItem Header="Date Template">
+            <dt:DataTemplateView/>
+        </TabItem>
+        <TabItem Header="Styles And Triggers">
+            <sat:StylesAndTriggersView/>
+        </TabItem>
+        <TabItem Header="Converters">
+            <converter:ValueConverterView/>
+        </TabItem>
+        <TabItem Header="Routed Evetns">
+            <routedEvents:MyCustomControl Click="MyCustomControl_Click" />
+        </TabItem>
+        <TabItem Header="Validation">
+            <validation:INotifyDataErrorInfoView />
+        </TabItem>
+        <TabItem Header="Routed Command">
+            <routedCommands:CustomRoutedCommandView/>
+        </TabItem>
+        <TabItem Header="Template Selector">
+            <dts:DTSView/>
+        </TabItem>
+        <TabItem Header="Attached DP">
+            <attachedDP1:ChangeControlBackgroundViaADP/>            
+        </TabItem>
+        <TabItem Header="BackgroundWorker1">
+            <backgroundWorker:BackgroundWorker1/>
+        </TabItem>
+        <TabItem Header="ComboBox">
+            <comboBoxEx:ComboBoxEx/>
+        </TabItem>
+        <TabItem Header="Static Dynamic Resources">
+            <staticDyanmicRes:StaticAndDyanmicResources/>
+        </TabItem>
+        <TabItem Header="Multi Value Binding and Converter">
+            <converter:MultiValue_Binding_Convertor/>
+        </TabItem>
+        <TabItem Header="Interactivity Example(Mouse over Command)">
+            <interactivity:InteractivityEx/>
+        </TabItem>
+        <TabItem Header="Custom Date Picker">
+            <StackPanel Orientation="Vertical">
+                <dpEx:CustomDatePickerUI/>
+                <dpEx:WatemarkTextBoxUI/>
+            </StackPanel>            
+        </TabItem>
+        <TabItem Header="Behaviours">
+            <StackPanel Orientation="Vertical">
+                <behaviourEx:TextBoxTextChangedBehaviour />
+                <behaviourEx:DoubleClickUsingBehaviourAndDP/>
+            </StackPanel>
+            
+        </TabItem>
+    </TabControl>    
+</Window>
