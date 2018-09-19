@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:OneStopSample.Resources">
+    <SolidColorBrush Color="White" x:Key="backGroundColor"/>
+    <SolidColorBrush Color="Red" x:Key="foreGroundColor"/>
+</ResourceDictionary>

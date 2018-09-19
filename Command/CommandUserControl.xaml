@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="OneStopSample.Command.CommandUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:OneStopSample.Command"
+             xmlns:vm="clr-namespace:OneStopSample.Command"
+             xmlns:behav="clr-namespace:OneStopSample.Behaviours"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" behav:MVVMBehaviours.LoadedMethodName="LoadCustomers">
+    
+    <UserControl.DataContext>
+        <vm:CommandUserControlViewModel />
+    </UserControl.DataContext>
+    
+    <UserControl.InputBindings>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DeleteCommand}"/>
+    </UserControl.InputBindings>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="87*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.RowSpan="2"
+                  ItemsSource="{Binding Customers}"
+                  SelectedItem="{Binding SelectedCustomer}"/>
+        <Button x:Name="btnDelete" Content="Delete"  HorizontalAlignment="Left" Margin="36,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.027,0.326"
+                Command="{Binding DeleteCommand}"/>
+    </Grid>
+</UserControl>

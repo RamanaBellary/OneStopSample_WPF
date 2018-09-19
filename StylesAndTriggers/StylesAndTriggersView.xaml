@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="OneStopSample.StylesAndTriggers.StylesAndTriggersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OneStopSample.StylesAndTriggers"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="BtnMouseOver" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Gold"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="BtnMouseOverMultiTrigger" TargetType="Button">
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding IsChecked, ElementName=chk1}" Value="True"/>
+                        <Condition Binding="{Binding IsMouseOver, ElementName=btn2}" Value="True"/>
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Background" Value="Aqua"/>
+                        <Setter Property="FontWeight" Value="ExtraBold"/>
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="CheckBox">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Foreground" Value="Red"></Setter>
+                </Trigger>
+                <!--<DataTrigger Binding="{Binding IsCheckBoxChecked}" Value="True">
+                    <Setter Property="Foreground" Value="Red"></Setter>
+                </DataTrigger>-->
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="91*"/>
+        </Grid.RowDefinitions>
+        <Button Style="{StaticResource BtnMouseOver}" Width="150" Height="30" Content="Mouse Hover me" Grid.Row="0"/>
+
+        <CheckBox Height="22" Width="150" x:Name="chk1" IsChecked="{Binding IsCheckBoxChecked}" Content="Check box" Grid.Row="1"/>
+        <Button x:Name="btn2" Style="{StaticResource BtnMouseOverMultiTrigger}" Height="30" 
+                Content="Check the CheckBox and Mouse Hover me" Grid.Row="2"/>
+    </Grid>
+</UserControl>

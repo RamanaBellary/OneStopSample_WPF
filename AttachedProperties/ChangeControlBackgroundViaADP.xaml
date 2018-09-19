@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="OneStopSample.AttachedProperties.ChangeControlBackgroundViaADP"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OneStopSample.AttachedProperties"
+             xmlns:CCBVADP="clr-namespace:OneStopSample.AttachedProperties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="changeBackgroundColor" TargetType="CheckBox">
+                <Style.Triggers>
+                    <Trigger Property="CCBVADP:ChangeControlBackGroundViaAttachedProperty.ShouldChangeBackground" Value="True">
+                        <Setter Property="Foreground" Value="Red"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            <Style x:Key="changeEditing" TargetType="TextBox">
+                <Setter Property="IsEnabled" Value="True"/>
+                <Style.Triggers>
+                    <Trigger Property="CCBVADP:ChangeControlBackGroundViaAttachedProperty.IsReadOnly" Value="True">
+                        <Setter Property="IsEnabled" Value="False"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="180*"/>
+        </Grid.RowDefinitions>
+        <CheckBox Content="Change Background" Style="{StaticResource changeBackgroundColor}" 
+                  CCBVADP:ChangeControlBackGroundViaAttachedProperty.ShouldChangeBackground="{Binding ChangeBackground}"
+                  IsChecked="{Binding ChangeBackground}" Grid.Row="0"/>
+
+        <TextBox Text="Test" Style="{StaticResource changeEditing}" Grid.Row="1" />
+        <CheckBox Content="IsReadOnly" IsChecked="{Binding IsReadOnly}" CCBVADP:ChangeControlBackGroundViaAttachedProperty.IsReadOnly="{Binding IsReadOnly}" Grid.Row="2"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="OneStopSample.DependencyPropertyEx.CustomDatePickerUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OneStopSample.DependencyPropertyEx"             
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label>Default</Label>
+            <local:CustomDatePicker />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Label>IsFocusable="False"</Label>
+            <local:CustomDatePicker IsFocusable="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Label>IsFocusable="True"</Label>
+            <local:CustomDatePicker IsFocusable="True"  Grid.Row="2"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

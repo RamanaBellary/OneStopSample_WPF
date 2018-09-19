@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="OneStopSample.InteractivityEx.InteractivityEx"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:OneStopSample.InteractivityEx"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:InteractivityExVM />
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="23*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Mouse over to invoke command using interactivity" Grid.RowSpan="2">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseEnter">
+                    <i:InvokeCommandAction Command="{Binding MouseEnterCmd}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <Image Grid.Row="1" Source="C:\Users\Public\Pictures\Sample Pictures\Chrysanthemum.jpg">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction Command="{Binding OnImageClick}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>
+    </Grid>
+</UserControl>
